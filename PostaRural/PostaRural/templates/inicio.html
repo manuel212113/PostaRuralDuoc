@@ -12,7 +12,9 @@ Author URL: http://w3layouts.com
 	<title>Posta Rural - Chile
 	</title>
 	<!-- Template CSS -->
-	<link rel="stylesheet" href="assets/css/style-starter.css">
+	{% load static %}
+
+	<link rel="stylesheet" href="{% static 'css/estilo-inicio.css' %}">
 	<!-- Template CSS -->
 	<link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
 	<!-- Template CSS -->
@@ -62,7 +64,7 @@ Author URL: http://w3layouts.com
 							<a class="nav-link" href="contact.html">Contacto</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="/PostaRuralDuoc/login/index.html">Intranet</a>
+							<a class="nav-link" href="{% url 'MostrarLogin' %}">Intranet</a>
 						</li>
 					</ul>
 					<!--/search-right-->
@@ -237,7 +239,7 @@ Author URL: http://w3layouts.com
 						</div>
 					</div>
 					<div class="photo-6-inf-left col-lg-6 pr-lg-4">
-						<a href="#"><img src="assets/images/g1.jpg" class="img-fluid" alt=""></a>
+						<a href="#"><img src="{% static 'images/g1.jpg' %}" class="img-fluid" alt=""></a>
 					</div>
 				</div>
 				<!-- //row-->
@@ -277,8 +279,8 @@ Author URL: http://w3layouts.com
 							<div class="stats_left">
 								<div class="counter_grid">
 									<div class="icon_info">
-										<p class="counter">563</p>
-										<h4>Happy Clients</h4>
+										<p class="counter">2000</p>
+										<h4>Clientes satisfechos</h4>
 										<p class="counter-para">Lorem ipsum dolor sit amet consectetur adipisicing elit
 										</p>
 									</div>
@@ -611,7 +613,7 @@ Author URL: http://w3layouts.com
 				<div class="row footer-top">
 					<div class="col-lg-4 footer-grid_section_w3layouts pr-lg-5">
 						<h2 class="logo-2 mb-lg-4 mb-3">
-							<a class="navbar-brand" href="index.html"><span>Dent</span>ile</a>
+							<a class="navbar-brand" href="index.html"><span>Post</span>rural</a>
 							<!-- if logo is image enable this   
 									<a class="navbar-brand" href="#index.html">
 										<img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
@@ -719,7 +721,7 @@ Author URL: http://w3layouts.com
 			</div>
 		</div>
 		<div class="cpy-right py-3">
-			<p class="text-center">© 2020 Dentile. All rights reserved | Design by
+			<p class="text-center">© 2021 Postrural. All rights reserved | Design by
 				<a href="postarural.cl"> PostaRural.</a>
 			</p>
 		</div>
@@ -754,7 +756,7 @@ Author URL: http://w3layouts.com
 
 </html>
 
-<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 <!-- disable body scroll which navbar is in active -->
 
 <!--//-->
@@ -767,8 +769,8 @@ Author URL: http://w3layouts.com
 </script>
 <!--/scroll-down-JS-->
 <!-- stats -->
-<script src="assets/js/jquery.waypoints.min.js"></script>
-<script src="assets/js/jquery.countup.js"></script>
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.countup.js' %}"></script>
 <script>
 	$('.counter').countUp();
 </script>
@@ -810,7 +812,7 @@ Author URL: http://w3layouts.com
 	});
 </script>
 <!-- for blog carousel slider -->
-<script src="assets/js/owl.carousel.js"></script>
+<script src="{% static 'js/owl.carousel.js' %}"></script>
 <!-- script for banner slider-->
 <script>
 	$(document).ready(function () {
@@ -880,4 +882,4 @@ Author URL: http://w3layouts.com
 <!-- //script for Testimonials-->
 <!-- //script -->
 
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>

@@ -245,8 +245,8 @@ p.account a:hover {
 }
 .w3l-hotair-form h1 {
     text-align: center;
-    font-size: 40px;
-    font-weight: 700;
+    font-size: 0px;
+    font-weight: bold;
     color: #fff;
 }
 
@@ -299,7 +299,7 @@ p.account a:hover {
 }
 
 .w3l-hotair-form button:hover {
-    background: #fdc500;
+    background: #e60023;
 }
 
 .w3l-hotair-form .social-icons ul li {

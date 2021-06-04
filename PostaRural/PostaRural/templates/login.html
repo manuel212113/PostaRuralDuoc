@@ -7,7 +7,7 @@ Author URL: http://w3layouts.com
 <html lang="zxx">
 
 <head>
-    <title>Report Login Form Responsive Widget Template :: W3layouts</title>
+    <title>Login-Postrural</title>
     <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
@@ -15,26 +15,32 @@ Author URL: http://w3layouts.com
         content="Report Login Form Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <!-- //Meta tag Keywords -->
     <link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
 
     <!--/Style-CSS -->
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/estilo-login.css' %}" type="text/css" media="all" />
     <!--//Style-CSS -->
 
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css" media="all">
 
 </head>
 
 <body>
 
     <!-- form section start -->
-    <section class="w3l-hotair-form" style="background-image: url('./images/fondo.jpg');">
+    <section class="w3l-hotair-form" style="background-image: url('{% static 'images/fondo3.jpg' %}'); background-size: contain;">
         <h1 style="color: teal;">Intranet Postrural</h1>
         <div class="container">
             <!-- /form -->
             <div class="workinghny-form-grid">
                 <div class="main-hotair">
                     <div class="content-wthree">
-                        <h2>Iniciar sesion</h2>
+                        <h2 style="font-size: 17px; width:100% ; text-align:left; margin-left:-30px; margin-top:-30px;"> <a class="fas fa-arrow-alt-circle-left"></a> Volver a el inicio</h2 >
+
+                        <h2 style="margin-top:20px;">Iniciar sesion</h2>
                         <form action="#" method="post">
                             <input type="text" class="text" name="text" placeholder="Rut" required="" autofocus>
                             <input type="password" class="password" name="password" placeholder=" Contraseña" required="" autofocus>
@@ -45,7 +51,7 @@ Author URL: http://w3layouts.com
                     </div>
                     <div class="w3l_form align-self">
                         <div class="left_grid_info">
-                            <img src="images/loginImage.png" style="height: 400px;" alt="" class="img-fluid">
+                            <img src="{% static 'images/loginImage.png' %}" style="height: 400px;" alt="" class="img-fluid">
                         </div>
                     </div>
                 </div>
