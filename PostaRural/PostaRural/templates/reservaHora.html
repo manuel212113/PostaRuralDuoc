@@ -1,0 +1,448 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!doctype html>
+<html lang="zxx">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Posta Rural - Reserva de Hora
+	</title>
+	<!-- Template CSS -->
+	{% load static %}
+
+	<link rel="stylesheet" href="{% static 'css/estilo-inicio.css' %}">
+	<!-- Template CSS -->
+	<link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
+	<!-- Template CSS -->
+</head>
+
+<body>
+	<!--w3l-header-->
+
+	<!--//top-header-content-->
+	<!--w3l-header-->
+	<header class="w3l-header-nav">
+		<!--/nav-->
+		<nav class="navbar navbar-expand-lg navbar-light px-lg-0 py-0 px-3 stroke">
+			<div class="container">
+				<a class="navbar-brand" href="index.html"><span>Post</span>rural</a>
+				<!-- if logo is image enable this   
+						<a class="navbar-brand" href="#index.html">
+							<img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+						</a> -->
+				<button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="fa icon-expand fa-bars"></span>
+					<span class="fa icon-close fa-times"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mx-lg-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="index.html">Inicio</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="about.html">Sobre Nosotros</a>
+						</li>
+					
+
+						<li class="nav-item dropdown show">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								Servicios <span class="fa fa-angle-down"></span>
+							</a>
+							<div class="dropdown-menu show" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="blog.html">Reserva de Horas Medicas</a>
+							</div>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="contact.html">Contacto</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'login' %}">Intranet</a>
+						</li>
+					</ul>
+					<!--/search-right-->
+					<div class="search-right">
+						<a href="#search" title="search"><span class="fa fa-search" aria-hidden="true"></span></a>
+						<!-- search popup -->
+						<div id="search" class="pop-overlay">
+							<div class="popup">
+
+								<form action="#" method="post" class="search-box">
+									<input type="search" placeholder="Saerch your Keyword" name="search"
+										required="required" autofocus="">
+									<button type="submit" class="btn"><span class="fa fa-search"
+											aria-hidden="true"></span></button>
+								</form>
+
+							</div>
+							<a class="close" href="#close">×</a>
+						</div>
+						<!-- /search popup -->
+					</div>
+					<!--//search-right-->
+					<div class="call-support">
+						<p>Llámanos</p>
+						<h5>+56 223377002</h5>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!--//nav-->
+	</header>
+
+	<section class="w3l-about5">
+		<div class="container-fluid px-0">
+			<div class="history-info position-relative">
+				<div class="heading text-center mx-auto">
+					<h3 class="hny-title two">Reserva de hora presenciales en linea.</h3>
+					<p class="mt-3">Atiendete con los mejores especialistas en Postrural.</p>
+					
+				</div>
+				<div class="position-relative">
+
+					<!-- <a href="#popup-video" class="play-view text-center position-absolute">
+							<span class="video-play-icon">
+								<span class="fa fa-play"></span>
+							</span>
+						</a> -->
+
+
+					<!-- dialog itself, mfp-hide class is required to make dialog hidden -->
+					<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+						<iframe src="https://player.vimeo.com/video/169036704" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+					</div>
+
+					<style type="text/css">
+						/* Styles for dialog window */
+						#small-dialog {
+							background: white;
+							padding: 5px;
+							max-width: 750px;
+							margin: 40px auto;
+							position: relative;
+						}
+
+						div#small-dialog iframe {
+							width: 100%;
+							height: 400px;
+							display: block;
+						}
+
+
+						/**
+		   * Fade-zoom animation for first dialog
+		   */
+
+						/* start state */
+						.my-mfp-zoom-in .zoom-anim-dialog {
+							opacity: 0;
+
+							-webkit-transition: all 0.2s ease-in-out;
+							-moz-transition: all 0.2s ease-in-out;
+							-o-transition: all 0.2s ease-in-out;
+							transition: all 0.2s ease-in-out;
+
+
+
+							-webkit-transform: scale(0.8);
+							-moz-transform: scale(0.8);
+							-ms-transform: scale(0.8);
+							-o-transform: scale(0.8);
+							transform: scale(0.8);
+						}
+
+						/* animate in */
+						.my-mfp-zoom-in.mfp-ready .zoom-anim-dialog {
+							opacity: 1;
+
+							-webkit-transform: scale(1);
+							-moz-transform: scale(1);
+							-ms-transform: scale(1);
+							-o-transform: scale(1);
+							transform: scale(1);
+						}
+
+						/* animate out */
+						.my-mfp-zoom-in.mfp-removing .zoom-anim-dialog {
+							-webkit-transform: scale(0.8);
+							-moz-transform: scale(0.8);
+							-ms-transform: scale(0.8);
+							-o-transform: scale(0.8);
+							transform: scale(0.8);
+
+							opacity: 0;
+						}
+
+						/* Dark overlay, start state */
+						.my-mfp-zoom-in.mfp-bg {
+							opacity: 0;
+							-webkit-transition: opacity 0.3s ease-out;
+							-moz-transition: opacity 0.3s ease-out;
+							-o-transition: opacity 0.3s ease-out;
+							transition: opacity 0.3s ease-out;
+						}
+
+						/* animate in */
+						.my-mfp-zoom-in.mfp-ready.mfp-bg {
+							opacity: 0.8;
+						}
+
+						/* animate out */
+						.my-mfp-zoom-in.mfp-removing.mfp-bg {
+							opacity: 0;
+						}
+
+
+
+						/**
+		   * Fade-move animation for second dialog
+		   */
+
+						/* at start */
+						.my-mfp-slide-bottom .zoom-anim-dialog {
+							opacity: 0;
+							-webkit-transition: all 0.2s ease-out;
+							-moz-transition: all 0.2s ease-out;
+							-o-transition: all 0.2s ease-out;
+							transition: all 0.2s ease-out;
+
+							-webkit-transform: translateY(-20px) perspective(600px) rotateX(10deg);
+							-moz-transform: translateY(-20px) perspective(600px) rotateX(10deg);
+							-ms-transform: translateY(-20px) perspective(600px) rotateX(10deg);
+							-o-transform: translateY(-20px) perspective(600px) rotateX(10deg);
+							transform: translateY(-20px) perspective(600px) rotateX(10deg);
+
+						}
+
+						/* animate in */
+						.my-mfp-slide-bottom.mfp-ready .zoom-anim-dialog {
+							opacity: 1;
+							-webkit-transform: translateY(0) perspective(600px) rotateX(0);
+							-moz-transform: translateY(0) perspective(600px) rotateX(0);
+							-ms-transform: translateY(0) perspective(600px) rotateX(0);
+							-o-transform: translateY(0) perspective(600px) rotateX(0);
+							transform: translateY(0) perspective(600px) rotateX(0);
+						}
+
+						/* animate out */
+						.my-mfp-slide-bottom.mfp-removing .zoom-anim-dialog {
+							opacity: 0;
+
+							-webkit-transform: translateY(-10px) perspective(600px) rotateX(10deg);
+							-moz-transform: translateY(-10px) perspective(600px) rotateX(10deg);
+							-ms-transform: translateY(-10px) perspective(600px) rotateX(10deg);
+							-o-transform: translateY(-10px) perspective(600px) rotateX(10deg);
+							transform: translateY(-10px) perspective(600px) rotateX(10deg);
+						}
+
+						/* Dark overlay, start state */
+						.my-mfp-slide-bottom.mfp-bg {
+							opacity: 0;
+
+							-webkit-transition: opacity 0.3s ease-out;
+							-moz-transition: opacity 0.3s ease-out;
+							-o-transition: opacity 0.3s ease-out;
+							transition: opacity 0.3s ease-out;
+						}
+
+						/* animate in */
+						.my-mfp-slide-bottom.mfp-ready.mfp-bg {
+							opacity: 0.8;
+						}
+
+						/* animate out */
+						.my-mfp-slide-bottom.mfp-removing.mfp-bg {
+							opacity: 0;
+						}
+					</style>
+
+					<!-- popup -->
+					<div id="popup-video" class="pop-overlay">
+						<div class="popup">
+							<div class="align-popup-video">
+								<iframe src="https://www.youtube.com/embed/JemJbNJ4ZtU" frameborder="0"
+									allowfullscreen></iframe>
+								<a class="close" href="#portfolio">&times;</a>
+							</div>
+
+						</div>
+					</div>
+					<!-- /popup -->
+				</div>
+			</div>
+		</div>
+	</section>
+    <section class="w3l-free-consultion" style="" >
+		<div class="container">
+			<div class="consultation-grids">
+				<div class="apply-form">
+					<h5>Reserva de Hora</h5>
+					<form id="formulario_reserva" method="post">
+                            {% csrf_token %}
+
+						<div class="admission-form">
+                         <div class="form-group">
+								<input type="text" id="rut"  class="form-control" placeholder="RUT*" required="yes">
+							</div>
+							<div class="form-group">
+								<input type="text" id="Nombres" class="form-control" placeholder="Nombres *" required="yes">
+							</div>
+                            <div class="form-group">
+								<input type="text" id="apellidos" class="form-control" placeholder="Apellidos *" required="yes">
+							</div>
+							<div class="form-group">
+								<input type="Number" id="celular" class="form-control" placeholder="Celular*" required="yes">
+							</div>
+                           
+                            <div class="form-group" >
+								<input type="date" id="fecha_reserva" class="form-control" id="fecha_consulta"  required="yes">
+							</div>
+                            
+                            <select class="form-control" id="hora_reserva" required>
+								<option>9:00</option>
+								<option>11:00</option>
+								<option>11:30</option>
+                                <option>12:00</option>
+                                <option>12:30</option>
+								<option>13:00</option>
+								<option>13:30</option>
+								<option>14:00</option>
+								<option>15:30</option>
+								<option>16:00</option>
+								<option>16:30</option>
+								<option>17:00</option>
+								<option>17:30</option>
+							</select>
+							<div class="form-group">
+								<input type="email" id="correo" class="form-control" placeholder="Email*" required="yes">
+							</div>
+							<select class="form-control" id="especialidad" required>
+								<option>Medicina General</option>
+								<option>Nutricionista</option>
+                                <option>Emergencia</option>
+								<option>Pediatria</option>
+								<option>Otro</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<textarea name="Comment" id="motivo_consulta" class="form-control" placeholder="Motivo consulta*" required="yes"></textarea>
+						</div>
+						<button type="submit" class="btn btn-primary submit">Reserva de Hora</button>
+					</form>
+				</div>
+				<div class="consultation-img">
+					<img src="{% static 'images/banner1.jpg' %}" class="img-fluid" alt="/">
+				</div>
+			</div>
+		</div>
+	</section>
+
+    </body>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+
+let form = document.getElementById('formulario_reserva');
+
+form.addEventListener('submit', function(event) { // 1
+    event.preventDefault()
+   let data = new FormData(); // 2
+    
+    data.append("rut_paciente", $("#rut").val());  
+    data.append("Nombres", $("#Nombres").val());
+    data.append("Apellidos", $("#apellidos").val());
+    data.append("Fecha_reserva", $("#fecha_reserva").val());
+    data.append("Hora_reserva", $("#hora_reserva").val());
+    data.append("celular", $("#celular").val());
+    data.append("correo", $("#correo").val());
+    data.append("especialidad", $("#especialidad").val());
+    data.append("motivo_consulta", $("#motivo_consulta").val());
+
+
+    data.append("csrfmiddlewaretoken", '{{csrf_token}}'); // 3
+    
+    axios.post('crear_reserva/', data) // 4
+     .then(res => alert("Hora Reservada Correctamente")) // 5
+     .catch(errors => console.log(errors)) // 6
+
+})
+
+
+</script>
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<!-- disable body scroll which navbar is in active -->
+
+<!--//-->
+<script>
+	$(function () {
+		$('.navbar-toggler').click(function () {
+			$('body').toggleClass('noscroll');
+		})
+	});
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0');
+var yyyy = today.getFullYear();
+today = yyyy + '-' + mm + '-' + dd;
+    $('#fecha_consulta').attr('min' , today);
+</script>
+<!--/scroll-down-JS-->
+<!-- stats -->
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.countup.js' %}"></script>
+<script>
+	$('.counter').countUp();
+</script>
+<!-- //stats -->
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('.popup-with-zoom-anim').magnificPopup({
+			type: 'inline',
+
+			fixedContentPos: false,
+			fixedBgPos: true,
+
+			overflowY: 'auto',
+
+			closeBtnInside: true,
+			preloader: false,
+
+			midClick: true,
+			removalDelay: 300,
+			mainClass: 'my-mfp-zoom-in'
+		});
+
+		$('.popup-with-move-anim').magnificPopup({
+			type: 'inline',
+
+			fixedContentPos: false,
+			fixedBgPos: true,
+
+			overflowY: 'auto',
+
+			closeBtnInside: true,
+			preloader: false,
+
+			midClick: true,
+			removalDelay: 300,
+			mainClass: 'my-mfp-slide-bottom'
+		});
+	});
+</script>
+<!-- for blog carousel slider -->
+<script src="{% static 'js/owl.carousel.js' %}"></script>
+<!-- script for banner slider-->
+
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>

@@ -38,11 +38,12 @@ Author URL: http://w3layouts.com
             <div class="workinghny-form-grid">
                 <div class="main-hotair">
                     <div class="content-wthree">
-                        <h2 style="font-size: 17px; width:100% ; text-align:left; margin-left:-30px; margin-top:-30px;"> <a class="fas fa-arrow-alt-circle-left"></a> Volver a el inicio</h2 >
+                        <h2 style="font-size: 17px; width:100% ; text-align:left; margin-left:-30px; margin-top:-30px;"> <a  href="{% url 'MostrarInicio' %}" class="fas fa-arrow-alt-circle-left"></a> Volver a el inicio</h2 >
 
                         <h2 style="margin-top:20px;">Iniciar sesion</h2>
-                        <form action="#" method="post">
-                            <input type="text" class="text" name="text" placeholder="Rut" required="" autofocus>
+                        <form  method="post">
+                            {% csrf_token %}
+                            <input type="text" class="text" name="username" placeholder="Nombre de Usuario" required="" autofocus>
                             <input type="password" class="password" name="password" placeholder=" Contraseña" required="" autofocus>
                             <button class="btn" type="submit">Log In</button>
                         </form>

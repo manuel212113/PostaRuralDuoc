@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'PostaRural'
+    'PostaRural',
+    'PostaRuralApp'
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,7 @@ TEMPLATES_URL='/templates/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+LOGIN_REDIRECT_URL = 'Dashboard'
+
+
+LOGOUT_REDIRECT_URL='MostrarInicio'
