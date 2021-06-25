@@ -14,6 +14,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
+
 
     <link rel="stylesheet" href="{% static 'vendors/iconly/bold.css' %}">
 
@@ -29,8 +31,8 @@
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
-                        <div class="logo">
-                            <a href="index.html">PostRural</a>
+                        <div class="logo" >
+                            <a href="index.html">PostRural</a >
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -42,11 +44,13 @@
                         <li class="sidebar-title">Menu</li>
 
                         <li class="sidebar-item active ">
-                            <a href="index.html" class='sidebar-link'>
+                            <a href="{% url 'Dashboard' %}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
+
+                        {% if rol_user == "Medico" %} 
 
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
@@ -55,7 +59,7 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="component-alert.html">Nueva Ficha</a>
+                                    <a href="{% url 'NuevaFicha' %}">Nueva Ficha</a>
                                 </li>
                                 <li class="submenu-item ">
                                     <a href="component-badge.html">Lista Pacientes</a>
@@ -64,7 +68,27 @@
                             </ul>
                         </li>
 
-                        
+                        {% elif rol_user == "Administrador" %} 
+
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="fas fa-user"></i>
+                                <span>Usuarios</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item ">
+                                    <a href="component-alert.html">Listar Usuarios</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="component-badge.html">Agregar Usuario</a>
+                                </li>
+                          
+                            </ul>
+                        </li>
+
+                     {% endif %}
+
 
                         <li class="sidebar-title">Opciones &amp; Cuenta</li>
 

@@ -123,6 +123,9 @@ STATIC_URL = '/static/'
 
 TEMPLATES_URL='/templates/'
 
+AUTH_USER_MODEL = 'PostaRuralApp.UserSalud'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -133,3 +136,5 @@ LOGIN_REDIRECT_URL = 'Dashboard'
 
 
 LOGOUT_REDIRECT_URL='MostrarInicio'
+
+

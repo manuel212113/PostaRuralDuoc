@@ -1,6 +1,6 @@
 from  django.http import HttpResponse,JsonResponse
 from django.shortcuts import render,redirect
-from .models import ReservaHora
+from .models import ReservaHora, UserSalud
 
 def MostrarInicio(request):
    
@@ -11,14 +11,37 @@ def login(request):
    return render(request,'login.html')
 
 
+def NuevaFicha(request):
+     current_user = request.user.username
+     if UserSalud.objects.filter(username=current_user, user_type='Medico'):
+      rol='Medico'
+      return render(request,'ficha_clinica.html' ,{'rol_user':rol})
+     else:
+      return redirect("http://127.0.0.1:8000/")
 
-def Dashboard(request):
-   return render(request,'dashboard.html')
+
+def Dashboard(request):   
+    current_user = request.user.username
+    rol=''
+    if UserSalud.objects.filter(username=current_user, user_type='Medico'):
+        rol='Medico'
+        return render(request,'dashboard.html' ,{'username':current_user, 'rol_user':rol})
+
+    elif UserSalud.objects.filter(username=current_user, user_type='Administrador'):
+        rol='Administrador'
+        return render(request,'dashboard.html' ,{'username':current_user, 'rol_user':rol})
+
+    elif UserSalud.objects.filter(username=current_user, user_type='Paciente'):
+        rol='Paciente'
+        return render(request,'dashboard.html' ,{'username':current_user, 'rol_user':rol})
+
+
+    else:
+      return redirect("http://127.0.0.1:8000/")
 
 
 def Reserva(request):
    return render(request,'reservaHora.html')
-
 
 
 def crearReserva(request):
