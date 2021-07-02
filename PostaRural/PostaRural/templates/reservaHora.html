@@ -18,7 +18,8 @@ Author URL: http://w3layouts.com
 	<!-- Template CSS -->
 	<link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
 	<!-- Template CSS -->
-</head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script></head>
 
 <body>
 	<!--w3l-header-->
@@ -350,6 +351,15 @@ Author URL: http://w3layouts.com
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script>
 
+
+function AlertaReserva(){
+	 Swal.fire(
+    'Reservado Exitosamente!',
+    'se envio el codigo de reserva a su correo',
+    'success'
+     )
+}
+
 let form = document.getElementById('formulario_reserva');
 
 form.addEventListener('submit', function(event) { // 1
@@ -369,8 +379,12 @@ form.addEventListener('submit', function(event) { // 1
 
     data.append("csrfmiddlewaretoken", '{{csrf_token}}'); // 3
     
+
+
     axios.post('crear_reserva/', data) // 4
-     .then(res => alert("Hora Reservada Correctamente")) // 5
+     .then(res => AlertaReserva()
+	 
+	 )  // 5
      .catch(errors => console.log(errors)) // 6
 
 })

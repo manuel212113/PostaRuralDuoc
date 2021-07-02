@@ -1,6 +1,11 @@
 from  django.http import HttpResponse,JsonResponse
 from django.shortcuts import render,redirect
 from .models import ReservaHora, UserSalud
+from django.core.mail import EmailMultiAlternatives
+from django.conf import settings
+from django.core.mail import send_mail
+from django.template.loader import get_template
+
 
 def MostrarInicio(request):
    
@@ -44,7 +49,28 @@ def Reserva(request):
    return render(request,'reservaHora.html')
 
 
+
+
+
+def Enviar_EmailReserva(user_mail, subject, template_name, context):
+    template = get_template(template_name)
+    content = template.render(context)
+
+    message = EmailMultiAlternatives(
+        subject=subject,
+        body='',
+        from_email=settings.EMAIL_HOST_USER,
+        to=[
+            user_mail
+        ],
+        cc=[]
+    )
+
+    message.attach_alternative(content, 'text/html')
+    return message
 def crearReserva(request):
+
+           
     if request.method == 'POST': 
         rut = request.POST.get('rut_paciente') 
         nombres = request.POST.get('Nombres')
@@ -55,7 +81,8 @@ def crearReserva(request):
         Correo=request.POST.get('correo')
         Especialidad=request.POST.get('especialidad')
         Motivo_consulta=request.POST.get('motivo_consulta')
-        ReservaHora.objects.create(
+      
+        reserva=ReservaHora.objects.create(
             rut_paciente=rut,
             Nombres=nombres,
             Apellidos=apellidos,
@@ -67,4 +94,23 @@ def crearReserva(request):
             motivo_consulta=Motivo_consulta
 
         )
-    return JsonResponse({"status": 'Success'}) 
+        if request.method == 'POST': 
+
+         mail = Enviar_EmailReserva(Correo,
+        'Codigo Reserva PostRural ',
+        'email_reserva.html',
+         {
+            'nombre': nombres,'codigo':reserva.id
+            
+         }
+    )
+
+    else:
+       return JsonResponse({"status": 'error'})     
+    
+    mail.send(fail_silently=False)
+    return JsonResponse({"id_reserva": reserva.id}) 
+
+
+     
+    
