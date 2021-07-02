@@ -93,3 +93,23 @@ class ReservaHora(models.Model):
     motivo_consulta=models.CharField('Motivo Consulta',max_length=300)
     Medico_asignado=models.CharField('Medico ',max_length=300, default="Sin Asignar")
     
+
+class FichaPaciente(models.Model):
+    rut_paciente=models.CharField('RUT Paciente',max_length=15,null=False)
+    Nombres=models.CharField('Nombres del Paciente', max_length=250 )
+    Apellidos=models.CharField('Apellidos del Paciente', max_length=250)
+    Genero=models.CharField('genero del Paciente', max_length=250)
+    celular=models.CharField('Celular',max_length=300, default="Sin Celular")
+    estado_civil=models.CharField('estado civil',max_length=300, default="Soltero")
+    comuna=models.CharField('comuna del Paciente', max_length=250)
+    region=models.CharField('region del Paciente', max_length=250)
+    direccion=models.CharField('direccion del Paciente', max_length=250)
+    nacimiento=models.CharField('fecha nacimiento del Paciente', max_length=250)
+    nacionalidad=models.CharField('nacionalidad del Paciente', max_length=250)
+    correo=models.CharField('correo del Paciente', max_length=250)
+    EnfermedadesCronicas=models.CharField('enfermedades cronicas del Paciente', max_length=250 , default="Sin Enfermedades")
+    Alergias=models.CharField('alergias del Paciente', max_length=250, default="Sin Alergias")
+    AcompañanteNombre=models.CharField('nombre  del acompañante', max_length=250)
+    AcompañanteApellido=models.CharField('apellido  del acompañante', max_length=250)
+    RelacionAcompañante=models.CharField('relacion con el Paciente', max_length=250)
+    celularAcompañante=models.CharField('celular  del acompañante del paciente', max_length=250)

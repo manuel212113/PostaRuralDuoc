@@ -24,11 +24,15 @@
 
     <link rel="stylesheet" href="{% static 'css/estilo-dashboard.css' %}">
     <link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.0/toastify.css" integrity="sha512-NTgh1hAkFlHcajjT2sJdXbGYSDPf6gpORN5YqgmGqy82J79utFlYfmLulfO3uXMQX8adcPMkPGAT8H/zmaGmvA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+    	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <script src="{% static 'js/regioncomuna.js' %}" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.0/toastify.js" integrity="sha512-sEHBdwx12SnNIw4XLYlcztPfPMpDfEfw17Cl7LSXwEXQIKztb96Mx5TKizezvMtJ0rIutCzGCw7NFXnPeBWdSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
 </head>
 
@@ -84,7 +88,7 @@
                                     <a href="{% url 'NuevaFicha' %}">Nueva Ficha</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="component-badge.html">Lista Pacientes</a>
+                                    <a href="{% url 'MostarListaPacientesCronicos' %}">Asignar Medicamento</a>
                                 </li>
                           
                             </ul>
@@ -176,7 +180,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form" method="POST" id="formulario_ficha">
+                                        <form class="form" method="POST"  id="formulario_ficha">
                                             <div class="row">
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
@@ -514,7 +518,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
-                                                <label for="email-id-column">Enfermedades Cronicas</label>
+                                                <label for="email-id-column">Enfermedades Cronicas(Opcional)</label>
                                                 <div class="form-group">
                                                     <select class="choices form-select multiple-remove" id="enfermedadescronicasPaciente" 
                                                         multiple="multiple" >
@@ -537,7 +541,7 @@
                                                 </div>
                                             </div>
                                              <div class="col-md-6 col-12">
-                                                <label for="email-id-column">Alergias </label>
+                                                <label for="email-id-column">Alergias(Opcional) </label>
                                                 <div class="form-group">
                                                     <select class="choices form-select multiple-remove" id="alergiasPaciente"
                                                         multiple="multiple">
@@ -609,7 +613,7 @@
                                         <button class="btn btn-primary me-1 mb-1"   id="btnGuardar" type="button">
                                             Guardar
                                         </button>
-                                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Vaciar</button>
+                                                    <button type="reset" id="btnVaciar" class="btn btn-light-secondary me-1 mb-1">Vaciar</button>
                                             </div>
                                         </form>
                                     </div>
@@ -642,11 +646,46 @@
 
     <script src="{% static 'js/main-dashboard.js' %}"></script>
     <script>
-     let form = document.getElementById('formulario_ficha');
 
-form.addEventListener('submit', function(event) { // 1
-    event.preventDefault()
-   let data = new FormData(); // 2
+
+function AlertaExito(){
+	 Swal.fire(
+    'Ficha creada correctamente!',
+    'se creo la ficha correctamente',
+    'success'
+     )
+    $("#btnVaciar").click();
+    $("#circuloCargando").remove();
+    $("#btnGuardar").text("Guardar");
+
+
+}
+  function AlertaError(){
+         Toastify({
+        text: "Debe rellenar todos los campos",
+        duration: 3000,
+        close:true,
+        gravity:"top",
+        position: "right",
+        backgroundColor: "red",
+    }).showToast();
+
+  }
+    
+    $( "#btnGuardar" ).click(function() {
+     
+
+   if($("#rutPaciente").val()=="" || $("#nombrePaciente").val()=="" || $("#apellidoPaciente").val()=="" || $("#paisPaciente").val()=="" || $("#fechanacimientoPaciente").val()=="" ||  $("#comunas").val()=="sin-comuna" || $("#regiones").val()=="sin-region" || $("#direccionPaciente").val()==""){
+      
+      AlertaError();
+
+   }else{
+
+   $("#btnGuardar").text("");
+        var html='<span class="spinner-border spinner-border-sm" id="circuloCargando" role="status" aria-hidden="true"></span>  <span class="visually-visible">Cargando...</span>'
+  $( this ).append(html);
+   
+    let data = new FormData(); // 2
     
     data.append("rut_paciente", $("#rutPaciente").val());  
     data.append("Nombres", $("#nombrePaciente").val());
@@ -667,19 +706,20 @@ form.addEventListener('submit', function(event) { // 1
     data.append("CelularAcompañante", $("#celularAcompañante").val());
     data.append("Relacion", $("#relacionAcompañante").val());
 
-   $("#btnGuardar").text("");
-       alert( $("#enfermedadescronicasPaciente").val());
-        var html='<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>  <span class="visually-visible">Cargando...</span>'
-    $( this ).append(html);
+
 
     data.append("csrfmiddlewaretoken", '{{csrf_token}}'); // 3
-    
 
+    axios.post('crear_ficha/', data) // 4
+     .then(res => AlertaExito())  // 5
+     .catch(errors => console.log(errors)) // 6
 
-    
-
+    console.log(JSON.stringify(Object.fromEntries(data)));
+   }
+   
 })
     
+
 
     </script>
     

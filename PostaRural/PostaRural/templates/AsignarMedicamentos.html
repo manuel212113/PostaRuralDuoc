@@ -1,0 +1,385 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Ficha Nueva</title>
+
+
+	{% load static %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+    <link rel="stylesheet" href="{% static 'vendors/iconly/bold.css' %}">
+
+    <link rel="stylesheet" href="{% static 'vendors/perfect-scrollbar/perfect-scrollbar.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/bootstrap-icons/bootstrap-icons.css' %}">
+
+        <link rel="stylesheet" href="{% static 'vendors/choices.js/choices.min.css'  %}">
+
+    <link rel="stylesheet" href="{% static 'css/estilo-dashboard.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.0/toastify.css" integrity="sha512-NTgh1hAkFlHcajjT2sJdXbGYSDPf6gpORN5YqgmGqy82J79utFlYfmLulfO3uXMQX8adcPMkPGAT8H/zmaGmvA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+    	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script src="{% static 'js/regioncomuna.js' %}" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.0/toastify.js" integrity="sha512-sEHBdwx12SnNIw4XLYlcztPfPMpDfEfw17Cl7LSXwEXQIKztb96Mx5TKizezvMtJ0rIutCzGCw7NFXnPeBWdSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
+<script>
+
+ async function Asignar(){ 
+const { value: rut_pa } = await Swal.fire({
+  title: 'Ingresa el rut',
+  input: 'text',
+  inputLabel: 'RUT',
+  inputPlaceholder: 'Ingresa el rut',
+  inputAttributes: {
+    maxlength: 15,
+    autocapitalize: 'off',
+    autocorrect: 'off'
+  }
+})
+
+if (rut_pa) {
+  Swal.fire(`Entered password: ${rut_pa}`)
+ const { value: medicamento } = await Swal.fire({
+  title: 'Ingresa el medicamento',
+  input: 'text',
+  inputLabel: 'Medicamento',
+  inputPlaceholder: 'Ingresa el nombre del Medicamento',
+  inputAttributes: {
+    maxlength: 25,
+    autocapitalize: 'off',
+    autocorrect: 'off'
+  }
+  if(medicamento){
+      
+  }
+})
+ 
+
+ 
+
+}
+}
+
+</script>
+
+
+</head>
+
+<style>
+.form-control {
+    color:black;
+    font-weight:bold;
+    opacity:4;
+
+}
+.form-control::placeholder{
+    color:black;
+    opacity:0.5;
+    font-weight:400;
+
+
+}
+</style>
+<body>
+    <div id="app">
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="logo" >
+                            <a href="{% url 'Dashboard' %}">PostRural</a>
+                        </div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class="sidebar-title">Menu</li>
+
+                        <li class="sidebar-item  ">
+                            <a href="{% url 'Dashboard' %}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
+                        {% if rol_user == "Medico" %} 
+
+                        <li class="sidebar-item active  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="fas fa-user-injured"></i>
+                                <span>Paciente</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item  ">
+                                    <a href="{% url 'NuevaFicha' %}">Nueva Ficha</a>
+                                </li>
+                                <li class="submenu-item  active">
+                                    <a href="{% url 'NuevaFicha' %}">Asignar Medicamento</a>
+                                </li>
+                          
+                            </ul>
+                        </li>
+
+                        {% elif rol_user == "Administrador" %} 
+
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="fas fa-user"></i>
+                                <span>Usuarios</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item ">
+                                    <a href="component-alert.html">Listar Usuarios</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="component-badge.html">Agregar Usuario</a>
+                                </li>
+                          
+                            </ul>
+                        </li>
+
+                     {% endif %}
+
+
+                        <li class="sidebar-title">Opciones &amp; Cuenta</li>
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-person-badge-fill"></i>
+                                <span>Cuenta</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item ">
+                                    <a href="form-element-input.html">Cambiar Contraseña</a>
+                                </li>
+                               
+                                
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="{% url 'logout' %}" class='sidebar-link'>
+                                <i class="bi bi-x-circle-fill"></i>
+                                <span>Cerrar sesion</span>
+                            </a>
+                        </li>
+
+                       
+
+                    </ul>
+                </div>
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
+        </div>
+
+ <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            <div class="page-heading">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Table</h3>
+                            <p class="text-subtitle text-muted">For user to check they list</p>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Table</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Basic Tables start -->
+                <section class="section">
+                    <div class="row" id="basic-table">
+                        <div class="col-12 col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Table with outer spacing</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <p class="card-text">Using the most basic table up, here’s how
+                                            <code>.table</code>-based tables look in Bootstrap. You can use any example
+                                            of below table for your table and it can be use with any type of bootstrap
+                                            tables.
+                                        </p>
+                                        <!-- Table with outer spacing -->
+                                        <div class="table-responsive">
+                                            <table class="table table-lg">
+                                                <thead>
+                                                    <tr>
+                                                        <th>RUT</th>
+                                                        <th>Nombre</th>
+                                                        <th>Enfermedades</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for row in ListUsers %}
+
+                                                    <tr>
+                                                        <td class="text-bold-500" >
+                                                        {{row.rut_paciente}}</td>
+                                                        <td>{{row.Nombres}}</td>
+                                                        <td class="text-bold-500">{{row.EnfermedadesCronicas}}</td>
+                                                       
+
+
+                                                    </tr>
+                                                                                                                              {% endfor %}
+
+                                                </tbody>
+                                            </table>
+                                            <button class="btn btn-primary" onclick="Asignar()">Asignar Medicamento por rut</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                </section>
+                <!-- Basic Tables end -->
+
+                <!--  Inverse table start -->
+               
+
+
+             <footer>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="float-start">
+                        <p>2021 &copy; Mazer</p>
+                    </div>
+                    <div class="float-end">
+                        <p>Version 0.0.1 <span class="text-danger"></span> by <a
+                                href="google.com">PostRural</a></p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+   <script src="{% static 'vendors/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendors/choices.js/choices.min.js' %}"></script>
+
+    <script src="{% static 'vendors/apexcharts/apexcharts.js' %}"></script>
+    <script src="{% static 'js/pages/dashboard.js' %}"></script>
+
+    <script src="{% static 'js/main-dashboard.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+
+    <script>
+
+
+function AlertaExito(){
+	 Swal.fire(
+    'Ficha creada correctamente!',
+    'se creo la ficha correctamente',
+    'success'
+     )
+    $("#btnVaciar").click();
+    $("#circuloCargando").remove();
+    $("#btnGuardar").text("Guardar");
+
+
+}
+  function AlertaError(){
+         Toastify({
+        text: "Tienes que rellenar todos los campos",
+        duration: 3000,
+        close:true,
+        gravity:"top",
+        position: "right",
+        backgroundColor: "red",
+    }).showToast();
+
+  }
+    
+    $( "#btnGuardar" ).click(function() {
+     
+
+   if($("#rutPaciente").val()=="" || $("#nombrePaciente").val()=="" || $("#apellidoPaciente").val()=="" || $("#paisPaciente").val()=="" || $("#fechanacimientoPaciente").val()=="" ||  $("#comunas").val()=="sin-comuna" || $("#regiones").val()=="sin-region" || $("#direccionPaciente").val()==""){
+      
+      AlertaError();
+
+   }else{
+
+   $("#btnGuardar").text("");
+        var html='<span class="spinner-border spinner-border-sm" id="circuloCargando" role="status" aria-hidden="true"></span>  <span class="visually-visible">Cargando...</span>'
+  $( this ).append(html);
+   
+    let data = new FormData(); // 2
+    
+    data.append("rut_paciente", $("#rutPaciente").val());  
+    data.append("Nombres", $("#nombrePaciente").val());
+    data.append("Apellidos", $("#apellidoPaciente").val());
+    data.append("Pais", $("#paisPaciente").val());
+    data.append("Genero", $("#generoPaciente").val());
+    data.append("EstadoCivil", $("#estadocivilPaciente").val());
+    data.append("Nacimiento", $("#fechanacimientoPaciente").val());
+    data.append("Region", $("#regiones").val());
+    data.append("Comuna", $("#comunas").val());
+    data.append("Direccion", $("#direccionPaciente").val());
+    data.append("Celular", $("#celularPaciente").val());
+    data.append("Correo", $("#correoPaciente").val());
+    data.append("AlergiasPaciente", $("#alergiasPaciente").val());
+    data.append("EnfermedadesCronicas", $("#enfermedadescronicasPaciente").val());
+    data.append("NombreAcompañante", $("#nombreAcompañante").val());
+    data.append("ApellidoAcompañante", $("#apellidoAcompañante").val());
+    data.append("CelularAcompañante", $("#celularAcompañante").val());
+    data.append("Relacion", $("#relacionAcompañante").val());
+
+
+
+    data.append("csrfmiddlewaretoken", '{{csrf_token}}'); // 3
+
+    axios.post('crear_ficha/', data) // 4
+     .then(res => AlertaExito())  // 5
+     .catch(errors => console.log(errors)) // 6
+
+    console.log(JSON.stringify(Object.fromEntries(data)));
+   }
+   
+})
+    
+
+
+    </script>
+    
+     <script src="{% static 'vendors/simple-datatables/simple-datatables.js' %}"></script>
+  
+</body>
+
+
+
+</html>
